@@ -1,0 +1,17 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>All Cocktails</h1>
+
+<div>
+    <a href="/cocktails/new">Add a new Cocktail</a>
+</div>
+
+<ul>
+    <% for (let cocktail of cocktails) { %>
+        <li>
+            <a href="/cocktails/<%= cocktail._id %>">
+                <%= cocktail.title %>
+            </a>
+        </li>
+    <% } %>
+</ul>   

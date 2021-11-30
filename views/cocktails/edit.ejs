@@ -1,0 +1,69 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>Edit a Cocktail Entry</h1>
+
+<form action="/cocktails/<%=cocktail._id%>/?_method=PUT" method="POST">
+    <div>
+        <label for="title">Title</label>
+        <input type="text" name="cocktail[title]" id="title" value="<%= cocktail.title %>">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea name="cocktail[description]" id="description"><%= cocktail.description%></textarea>
+    </div>
+    <div>
+        <label for="ingredients">Ingredients</label>
+        <ul>
+            <li>
+                <input type="text" name="cocktail[ing1]" id="ing1" value="<%= cocktail.ing1 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing2]" id="ing2" value="<%= cocktail.ing2 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing3]" id="ing3" value="<%= cocktail.ing3 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing4]" id="ing4" value="<%= cocktail.ing4 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing5]" id="ing5" value="<%= cocktail.ing5 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing6]" id="ing6" value="<%= cocktail.ing6 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing7]" id="ing7" value="<%= cocktail.ing7 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing8]" id="ing8]" value="<%= cocktail.ing8 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing9]" id="ing9" value="<%= cocktail.ing9 %>">
+            </li>
+            <li>
+                <input type="text" name="cocktail[ing10]" id="ing10" value="<%= cocktail.ing10 %>">
+            </li>
+        </ul>
+      
+    </div>
+    <div>
+        <label for="instructions">Instructions</label>
+        <textarea name="cocktail[instructions]" id="instructions"><%= cocktail.instructions %></textarea>
+    </div>
+    <div>
+        <label for="glass">Glass</label>
+        <input type="text" name="cocktail[glass]" id="glass" value="<%= cocktail.glass %>">
+    </div>
+    <div>
+        <label for="garnish">Garnish</label>
+        <input type="text" name="cocktail[garnish]" id="garnish" value="<%= cocktail.garnish %>">
+    </div>
+    <div>
+        <label for="image">Image URL</label>
+        <input type="text" name="cocktail[image]" id="image" value="<%= cocktail.image %>">
+    </div>
+    <button>Update Cocktail</button>
+</form>
+
+<footer><a href="/cocktails/<%= cocktail._id %>">Go back to Cocktail (<%= cocktail.title %>)</a></footer>

@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+
+
+<div class="card mt-3 mb-3" style="width: 18rem;">
+    <h5 class="card-title text-center">
+        <%=cocktail.title%>
+    </h5>
+    <img src="<%=cocktail.image%>" class="card-img-top" alt="Picture of a cocktail">
+    <div class="card-body">
+        
+        <p class="card-text"><%=cocktail.description%></p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <% if (cocktail.ing1 !== "") {%>     
+            <li class="list-group-item"><%=cocktail.ing1%></li>
+        <% } %>
+        <% if (cocktail.ing2 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing2%></li>
+        <% } %>
+            <li class="list-group-item"><%=cocktail.ing3%></li>
+        <% if (cocktail.ing4 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing4%></li>
+        <% } %>
+        <% if (cocktail.ing5 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing5%></li>
+        <% } %>
+        <% if (cocktail.ing6 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing6%></li>
+        <% } %>
+        <% if (cocktail.ing7 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing7%></li>
+        <% } %>
+        <% if (cocktail.ing8 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing8%></li>
+        <% } %>
+        <% if (cocktail.ing9 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing9%></li>
+        <% } %>
+        <% if (cocktail.ing10 !== "") {%>
+            <li class="list-group-item"><%=cocktail.ing10%></li>
+        <% } %>
+    </ul>
+    <div class="card-body">
+        <a href="/cocktails/<%=cocktail.id%>/edit" class="card-link">Edit</a>
+        <a href="/cocktails/<%=cocktail.id%>/delete" class="card-link">Delete</a>
+  
+</div>
+
+<div>
+    <form action="/cocktails/<%= cocktail._id %>/?_method=DELETE" method="POST">
+        <button>Delete Cocktail</button>
+</div>
+<footer>
+    <a href="/cocktails">Go back to Cocktails</a>
+</footer>
