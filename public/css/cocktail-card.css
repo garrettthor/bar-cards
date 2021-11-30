@@ -1,0 +1,44 @@
+.cocktail-card-show {
+    margin-top: 1rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.cocktail-card-show__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #ff8080;
+}
+
+.cocktail-card-show__body {
+    padding: 0.5rem;
+}
+
+.cocktail-card-show__image {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.cocktail-card-show__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cocktail-card-show__description {
+    padding: 1rem;
+    text-align: justify;
+}
+
+.cocktail-card-show__ingredients li {
+    margin-left: 2rem;
+}
