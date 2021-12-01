@@ -6,6 +6,7 @@
     /* align-items: center; */
     justify-content: center;
     border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .cocktail-card-show__header {
@@ -32,10 +33,15 @@
 .cocktail-card-show__image img {
     max-width: 100%;
     height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
 }
 
-.cocktail-card-show__description {
-    padding: 1rem;
+.cocktail-card-show__description p,
+.cocktail-card-show__instructions p,
+.cocktail-card-show__glass p,
+.cocktail-card-show__garnish p {
+    padding-left: 1rem;
     text-align: justify;
 }
 

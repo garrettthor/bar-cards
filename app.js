@@ -11,9 +11,9 @@ mongoose.connect('mongodb://localhost/bar-cards',
 });
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', () => {
-    console.log('connected to database');
+    console.log('Connected to database');
 });
 
 
@@ -72,14 +72,6 @@ app.delete('/cocktails/:id', async (req, res) => {
 
 
 
-
-//This is just an a test to create a new cocktail
-
-// app.get('/makeCocktail', async (req, res) => {
-//     const whiskeySour = new Cocktail({ title: 'Whiskey Sour', price: 12 });
-//     await whiskeySour.save();
-//     res.send(whiskeySour);
-// });
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

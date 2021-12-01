@@ -48,3 +48,27 @@ main {
     right: 0;
     z-index: 1;
 }
+
+/* HOME */
+/* The following styles the intro/home page content. */
+
+#home-card {
+    width: 30rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-top: 3rem;
+    background: coral;
+}
+
+#home-card h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#home-card p {
+    font-size: 1.5rem;
+    text-align: justify;
+    margin-bottom: 2rem;
+}
