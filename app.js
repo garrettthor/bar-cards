@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const Cocktail = require('./models/cockail');
+const { resourceLimits } = require('worker_threads');
 
 mongoose.connect('mongodb://localhost/bar-cards', 
     { useNewUrlParser: true,
@@ -29,9 +30,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Home route
+
 app.get('/', (req, res) => {
     res.render('home');
 });
+
+// Cocktails routes, CRUD operations
 
 app.get('/cocktails', async (req, res) => {
     const cocktails = await Cocktail.find({});
@@ -70,8 +76,12 @@ app.delete('/cocktails/:id', async (req, res) => {
     res.redirect('/cocktails');
 });
 
+// Compendium routes, CRUD operations
 
-
+app.get('/compendiums', (req, res) => {
+    // const compendiums = await Compendium.find({});
+    res.render('compendiums/index');
+});
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
