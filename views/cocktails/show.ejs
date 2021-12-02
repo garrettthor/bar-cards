@@ -1,5 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
+<a href="/cocktails">Go back to Cocktails</a>
+
 <section class="cocktail-card-show">
     <div class="cocktail-card-show__header">
         <h1 class="cocktail-card-show__title">
@@ -7,10 +9,12 @@
         </h1>
     </div>
 
+    
+    <div class="cocktail-card-show__image">
+        <img src="<%= cocktail.image %>" alt="<%= cocktail.title %>">
+    </div>
+
     <div class="cocktail-card-show__body">
-        <div class="cocktail-card-show__image">
-            <img src="<%= cocktail.image %>" alt="<%= cocktail.title %>">
-        </div>
 
         <div class="cocktail-card-show__description">
             <p>
@@ -93,6 +97,9 @@
             <p>
                 <%= cocktail.garnish %>
             </p>
+        </div>
+
+    </div>
 </section>
 
 <div>

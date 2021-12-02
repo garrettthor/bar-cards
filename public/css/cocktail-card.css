@@ -1,5 +1,8 @@
+/* The style for the cocktail card, as seen on the SHOW page. */
+
 .cocktail-card-show {
     margin-top: 1rem;
+    margin-bottom: 1rem;
     width: 30rem;
     display: flex;
     flex-direction: column;
@@ -9,7 +12,8 @@
     border-radius: 5px;
 }
 
-.cocktail-card-show__header {
+.cocktail-card-show__header,
+.cocktail-card-index__header {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -33,8 +37,8 @@
 .cocktail-card-show__image img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
-    margin-bottom: 0.5rem;
+    /* border-radius: 5px; */
+    /* margin-bottom: 0.5rem; */
 }
 
 .cocktail-card-show__description p,
@@ -45,6 +49,36 @@
     text-align: justify;
 }
 
+.cocktail-card-show__description p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
 .cocktail-card-show__ingredients li {
     margin-left: 2rem;
+}
+
+/* And then the style for the card as seen on the INDEX page. */
+
+#cocktail-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cocktail-card-index {
+    margin: 0.5rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cocktail-card-index__description {
+    padding: 0.5rem;
+    text-align: justify;
 }

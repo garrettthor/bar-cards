@@ -6,11 +6,22 @@
     <a href="/cocktails/new">Add a new Cocktail</a>
 </div>
 
-<ul>
+<ul id="cocktail-list">
     <% for (let cocktail of cocktails) { %>
         <li>
             <a href="/cocktails/<%= cocktail._id %>">
-                <%= cocktail.title %>
+                
+                <section class="cocktail-card-index">
+                    <div class="cocktail-card-index__header">
+                        <h2>
+                            <%= cocktail.title %>
+                        </h2>
+                    </div>
+                    
+                    <img src="<%= cocktail.image %>" alt="<%= cocktail.title %>">
+
+                    <p class="cocktail-card-index__description"><%= cocktail.description %></p>
+                </section>
             </a>
         </li>
     <% } %>
