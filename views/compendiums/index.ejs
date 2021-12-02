@@ -6,10 +6,15 @@
     <a href="/compendiums/new">Create a new compendium</a>
 </div>
 
-<ul>
-    <li>My compendium I</li>
-    <li>My compendium II</li>
-    <li>My compendium III</li>
-    <li>My compendium IV</li>
-    <li>My compendium V</li>
+<ul id="compendium-list">
+    <% for (var i = 0; i < compendiums.length; i++) { %>
+        <li>
+            <a href="/compendiums/<%= compendiums[i].id %>">
+                <div style="background-color: <%=compendiums[i].color%>;" class="compendium-mini-preview">
+                    <h2><%= compendiums[i].name %></h2>
+                    <span>Created: <%= compendiums[i].created %></span>
+                </div>
+            </a>
+        </li>
+    <% } %>
 </ul>

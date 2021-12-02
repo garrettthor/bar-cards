@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+
+<a href="/compendiums">Back to Compendiums</a>
+
+<h1><%=compendium.name%></h1>
+
+<p><%=compendium.description%></p>
+
+<a href="/compendiums/<%=compendium.id%>/edit">Edit</a>
+
+<button>Make Active Compendium</button>
+<form action="/compendiums/<%=compendium._id%>/?_method=DELETE" method="POST">
+    <button>Delete Compendium</button>
+</form>
+
+<a href="/compendiums">Back to Compendiums</a>

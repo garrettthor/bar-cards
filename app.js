@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const Cocktail = require('./models/cockail');
-const { resourceLimits } = require('worker_threads');
+const Compendium = require('./models/compendium');
+
 
 mongoose.connect('mongodb://localhost/bar-cards', 
     { useNewUrlParser: true,
@@ -78,10 +79,48 @@ app.delete('/cocktails/:id', async (req, res) => {
 
 // Compendium routes, CRUD operations
 
-app.get('/compendiums', (req, res) => {
-    // const compendiums = await Compendium.find({});
-    res.render('compendiums/index');
+app.get('/compendiums', async (req, res) => {
+    const compendiums = await Compendium.find({});
+    res.render('compendiums/index', { compendiums });
 });
+
+app.get('/compendiums/new', (req, res) => {
+    res.render('compendiums/new');
+});
+
+app.post('/compendiums', async(req, res) => {
+    const compendium = new Compendium(req.body.compendium);
+    await compendium.save();
+    res.redirect(`/compendiums/${compendium._id}`);
+});
+
+app.get('/compendiums', async(req, res) => {
+    const compendiums = await Compendium.find({});
+    res.render('compendiums/show', { compendiums });
+});
+
+app.get('/compendiums/:id', async (req, res) => {
+    const compendium = await Compendium.findById(req.params.id);
+    res.render('compendiums/show', { compendium });
+});
+
+app.get('/compendiums/:id/edit', async (req, res) => {
+    const compendium = await Compendium.findById(req.params.id);
+    res.render('compendiums/edit', { compendium });
+});
+
+app.put('/compendiums/:id', async (req, res) => {
+    const { id } = req.params;
+    const compendium = await Compendium.findByIdAndUpdate(id, req.body.compendium);
+    res.redirect(`/compendiums/${compendium._id}`); 
+});
+
+app.delete('/compendiums/:id', async (req, res) => {
+    const { id } = req.params;
+    const compendium = await Compendium.findByIdAndDelete(id);
+    res.redirect('/compendiums');
+});
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');

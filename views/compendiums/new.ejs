@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>New Compendium</h1>
+
+<a href="/compendiums">Back to Compendiums</a>
+
+<form action="/compendiums" method="POST">
+    <div>
+        <label for="name">Compendium Name</label>
+        <input type="text" name="compendium[name]" id="name"/>
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <textarea name="compendium[description]" id="description"></textarea>
+    </div>
+    <div>
+        <label for="color">Color (<a href="https://image-color-picker.com/hex-code-picker" target="_blank">hexidecimal</a> only)</label>
+        <input type="text" name="compendium[color]" id="color" value="#"/>
+    </div>
+    <button type="submit">Create Compendium</button>
+</form>

@@ -1,0 +1,32 @@
+/* Keeping the compendium styles separate for my own sanity. */
+
+#compendium-list {
+    width: 60rem;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.compendium-mini-preview {
+    width: 10rem;
+    height: 12rem;
+    margin: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px rgb(129, 129, 129), 2px 2px rgb(190, 190, 190),
+        3px 3px rgb(59, 59, 59), 4px 4px rgb(155, 155, 155),
+        5px 5px rgb(83, 83, 83), 6px 6px rgb(192, 192, 192),
+        7px 7px rgb(31, 31, 31);
+}
+
+.compendium-mini-preview h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
