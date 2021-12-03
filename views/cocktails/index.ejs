@@ -7,7 +7,14 @@
 </div>
 
 <ul id="cocktail-list">
+    <!-- Let's get these drinks organized alphabetically for starters. -->
+    <% let cocktailArr = [] %> 
     <% for (let cocktail of cocktails) { %>
+        <% cocktailArr.push(cocktail) %>
+    <% } %>
+    <% cocktailArr.sort((a,b) => a.title.localeCompare(b.title)) %>
+    <!-- Now we can iterate over the sorted array. -->
+    <% for (let cocktail of cocktailArr) { %>
         <li>
             <a href="/cocktails/<%= cocktail._id %>">
                 
@@ -25,4 +32,6 @@
             </a>
         </li>
     <% } %>
-</ul>   
+</ul>
+
+<script src="/js/cocktails/index.js"></script>
