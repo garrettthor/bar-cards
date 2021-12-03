@@ -5,11 +5,11 @@
 <form action="/cocktails/<%=cocktail._id%>/?_method=PUT" method="POST">
     <div>
         <label for="title">Title</label>
-        <input type="text" name="cocktail[title]" id="title" value="<%= cocktail.title %>">
+        <input type="text" name="cocktail[title]" id="title" value="<%= cocktail.title %>" required>
     </div>
     <div>
         <label for="description">Description</label>
-        <textarea name="cocktail[description]" id="description"><%= cocktail.description%></textarea>
+        <textarea name="cocktail[description]" id="description" required><%= cocktail.description%></textarea>
     </div>
     <div>
         <label for="ingredients">Ingredients</label>
@@ -49,19 +49,19 @@
     </div>
     <div>
         <label for="instructions">Instructions</label>
-        <textarea name="cocktail[instructions]" id="instructions"><%= cocktail.instructions %></textarea>
+        <textarea name="cocktail[instructions]" id="instructions" required><%= cocktail.instructions %></textarea>
     </div>
     <div>
         <label for="glass">Glass</label>
-        <input type="text" name="cocktail[glass]" id="glass" value="<%= cocktail.glass %>">
+        <input type="text" name="cocktail[glass]" id="glass" required value="<%= cocktail.glass %>">
     </div>
     <div>
         <label for="garnish">Garnish</label>
-        <input type="text" name="cocktail[garnish]" id="garnish" value="<%= cocktail.garnish %>">
+        <input type="text" name="cocktail[garnish]" id="garnish" required value="<%= cocktail.garnish %>">
     </div>
     <div>
         <label for="image">Image URL</label>
-        <input type="text" name="cocktail[image]" id="image" value="<%= cocktail.image %>">
+        <input type="text" name="cocktail[image]" id="image" required value="<%= cocktail.image %>">
     </div>
     <button>Update Cocktail</button>
 </form>

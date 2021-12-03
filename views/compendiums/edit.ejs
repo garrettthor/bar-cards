@@ -7,15 +7,15 @@
 <form action="/compendiums/<%=compendium._id%>/?_method=PUT" method="POST">
     <div>
         <label for="name">Compendium Name</label>
-        <input type="text" name="compendium[name]" id="name" value="<%=compendium.name%>" />
+        <input type="text" name="compendium[name]" id="name" value="<%=compendium.name%>" required />
     </div>
     <div>
         <label for="description">Description</label>
-        <textarea name="compendium[description]" id="description" /><%=compendium.description%></textarea>
+        <textarea name="compendium[description]" id="description" required /><%=compendium.description%></textarea>
     </div>
     <div>
         <label for="color">Color (hexidecimal only)</label>
-        <input type="text" name="compendium[color]" id="color" value="<%=compendium.color%>"/>
+        <input type="text" name="compendium[color]" id="color" value="<%=compendium.color%>" required />
     </div>
     <button type="submit">Confirm Compendium Edit</button>
 </form>

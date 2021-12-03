@@ -5,11 +5,15 @@
 <form action="/cocktails" method="POST">
     <div>
         <label for="title">Title</label>
-        <input type="text" name="cocktail[title]" id="title">
+        <input type="text" name="cocktail[title]" id="title" required>
     </div>
     <div>
         <label for="description">Description</label>
-        <textarea name="cocktail[description]" id="description"></textarea>
+        <textarea name="cocktail[description]" id="description" required></textarea>
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="number" name="cocktail[price]" id="price">
     </div>
     <div>
         <h2>Ingredients</h2>
@@ -59,19 +63,19 @@
     </div>
     <div>
         <label for="instructions">Instructions</label>
-        <textarea name="cocktail[instructions]" id="instructions"></textarea>
+        <textarea name="cocktail[instructions]" id="instructions" required></textarea>
     </div>
     <div>
         <label for="glass">Glass</label>
-        <input type="text" name="cocktail[glass]" id="glass">
+        <input type="text" name="cocktail[glass]" id="glass" required>
     </div>
     <div>
         <label for="garnish">Garnish</label>
-        <input type="text" name="cocktail[garnish]" id="garnish">
+        <input type="text" name="cocktail[garnish]" id="garnish" required>
     </div>
     <div>
         <label for="image">Image URL</label>
-        <input type="text" name="cocktail[image]" id="image">
+        <input type="text" name="cocktail[image]" id="image" required>
     </div>
     <button>Add Cocktail</button>
 </form>

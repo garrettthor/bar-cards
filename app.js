@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const CatchAsync = require('./utilities/catchAsync');
+const ExpressError = require('./utilities/expressError');
 const methodOverride = require('method-override');
 const Cocktail = require('./models/cockail');
 const Compendium = require('./models/compendium');
@@ -49,78 +51,87 @@ app.get('/cocktails/new', (req, res) => {
     res.render('cocktails/new');
 });
 
-app.post('/cocktails', async(req, res) => {
-    const cocktail = new Cocktail(req.body.cocktail);
-    await cocktail.save();
-    res.redirect(`/cocktails/${cocktail._id}`);
-});
+app.post('/cocktails', CatchAsync(async(req, res, next) => {
+        const cocktail = new Cocktail(req.body.cocktail);
+        await cocktail.save();
+        res.redirect(`/cocktails/${cocktail._id}`);
+}));
 
-app.get('/cocktails/:id', async (req, res) => {
+app.get('/cocktails/:id', CatchAsync(async(req, res) => {
     const cocktail = await Cocktail.findById(req.params.id);
     res.render('cocktails/show', { cocktail });
-});
+}));
 
-app.get('/cocktails/:id/edit', async (req, res) => {
+app.get('/cocktails/:id/edit', CatchAsync(async(req, res) => {
     const cocktail = await Cocktail.findById(req.params.id);
     res.render('cocktails/edit', { cocktail });
-});
+}));
 
-app.put('/cocktails/:id', async (req, res) => {
+app.put('/cocktails/:id', CatchAsync(async(req, res) => {
     const { id } = req.params;
     const cocktail = await Cocktail.findByIdAndUpdate(id, req.body.cocktail);
     res.redirect(`/cocktails/${cocktail._id}`); 
-});
+}));
 
-app.delete('/cocktails/:id', async (req, res) => {
+app.delete('/cocktails/:id', CatchAsync(async(req, res) => {
     const { id } = req.params;
     const cocktail = await Cocktail.findByIdAndDelete(id);
     res.redirect('/cocktails');
-});
+}));
+
+
 
 // Compendium routes, CRUD operations
 
-app.get('/compendiums', async (req, res) => {
+app.get('/compendiums', CatchAsync(async(req, res) => {
     const compendiums = await Compendium.find({});
     res.render('compendiums/index', { compendiums });
-});
+}));
 
 app.get('/compendiums/new', (req, res) => {
     res.render('compendiums/new');
 });
 
-app.post('/compendiums', async(req, res) => {
+app.post('/compendiums', CatchAsync(async(req, res) => {
     const compendium = new Compendium(req.body.compendium);
     await compendium.save();
     res.redirect(`/compendiums/${compendium._id}`);
-});
+}));
 
-app.get('/compendiums', async(req, res) => {
+app.get('/compendiums', CatchAsync(async(req, res) => {
     const compendiums = await Compendium.find({});
     res.render('compendiums/show', { compendiums });
-});
+}));
 
-app.get('/compendiums/:id', async (req, res) => {
+app.get('/compendiums/:id', CatchAsync(async(req, res) => {
     const compendium = await Compendium.findById(req.params.id);
     res.render('compendiums/show', { compendium });
-});
+}));
 
-app.get('/compendiums/:id/edit', async (req, res) => {
+app.get('/compendiums/:id/edit', CatchAsync(async(req, res) => {
     const compendium = await Compendium.findById(req.params.id);
     res.render('compendiums/edit', { compendium });
-});
+}));
 
-app.put('/compendiums/:id', async (req, res) => {
+app.put('/compendiums/:id', CatchAsync(async(req, res) => {
     const { id } = req.params;
     const compendium = await Compendium.findByIdAndUpdate(id, req.body.compendium);
     res.redirect(`/compendiums/${compendium._id}`); 
-});
+}));
 
-app.delete('/compendiums/:id', async (req, res) => {
+app.delete('/compendiums/:id', CatchAsync(async(req, res) => {
     const { id } = req.params;
     const compendium = await Compendium.findByIdAndDelete(id);
     res.redirect('/compendiums');
+}));
+
+// Error Handling
+
+app.use((err, req, res, next) => {
+    res.send('WHOOPSIES! We have a problem!');
 });
 
+// Hey, listen, lady!
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
