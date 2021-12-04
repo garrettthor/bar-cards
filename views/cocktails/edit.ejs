@@ -2,7 +2,7 @@
 
 <h1>Edit a Cocktail Entry</h1>
 
-<form action="/cocktails/<%=cocktail._id%>/?_method=PUT" method="POST">
+<form class="cocktail-form" action="/cocktails/<%=cocktail._id%>/?_method=PUT" method="POST">
     <div>
         <label for="title">Title</label>
         <input type="text" name="cocktail[title]" id="title" value="<%= cocktail.title %>" required>

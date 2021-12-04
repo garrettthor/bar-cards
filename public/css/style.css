@@ -87,6 +87,46 @@ input {
     line-height: 1.5;
     padding: 0.25rem 0.25rem;
     text-decoration: none;
+    margin: 0.5rem 0.5rem;
+    width: 80%;
+}
+
+/* Cocktail input form (new & edit) */
+
+.cocktail-form {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 35rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cocktail-form label {
+    font-size: 1.25rem;
+}
+
+.label-input-pair {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ingredients-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#description {
+    width: 20rem;
+    height: 100px;
+    resize: none;
 }
 
 /* This disables the arrows from appearing in the number input */

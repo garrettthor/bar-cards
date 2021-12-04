@@ -2,20 +2,20 @@
 
 <h1>Create a new Cocktail Entry</h1>
 
-<form action="/cocktails" method="POST">
-    <div>
+<form class="cocktail-form" action="/cocktails" method="POST">
+    <div class="label-input-pair">
         <label for="title">Title</label>
         <input type="text" name="cocktail[title]" id="title" required>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="description">Description</label>
         <textarea name="cocktail[description]" id="description" required></textarea>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="price">Price</label>
         <input type="number" name="cocktail[price]" id="price">
     </div>
-    <div>
+    <div class="ingredients-wrapper">
         <h2>Ingredients</h2>
         <ul>
             <li>
@@ -61,19 +61,19 @@
         </ul>
     
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="instructions">Instructions</label>
         <textarea name="cocktail[instructions]" id="instructions" required></textarea>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="glass">Glass</label>
         <input type="text" name="cocktail[glass]" id="glass" required>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="garnish">Garnish</label>
         <input type="text" name="cocktail[garnish]" id="garnish" required>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="image">Image URL</label>
         <input type="text" name="cocktail[image]" id="image" required>
     </div>
