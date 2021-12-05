@@ -52,6 +52,7 @@ app.get('/cocktails/new', (req, res) => {
 });
 
 app.post('/cocktails', CatchAsync(async(req, res, next) => {
+        if(!req.body.cocktail) throw new ExpressError('Invalid Cocktail Data', 400);
         const cocktail = new Cocktail(req.body.cocktail);
         await cocktail.save();
         res.redirect(`/cocktails/${cocktail._id}`);
@@ -93,6 +94,7 @@ app.get('/compendiums/new', (req, res) => {
 });
 
 app.post('/compendiums', CatchAsync(async(req, res) => {
+    if(!req.body.compendium) throw new ExpressError('Invalid Compendium Data', 400);
     const compendium = new Compendium(req.body.compendium);
     await compendium.save();
     res.redirect(`/compendiums/${compendium._id}`);
@@ -127,8 +129,15 @@ app.delete('/compendiums/:id', CatchAsync(async(req, res) => {
 
 // Error Handling
 
+app.all('*', (req, res, next) => {
+    // res.send('404!');
+    next(new ExpressError('Page Not Found', 404));
+});
+
 app.use((err, req, res, next) => {
-    res.send('WHOOPSIES! We have a problem!');
+    const { statusCode = 500, message = 'Something went wrong' } = err;
+    res.status(statusCode).send(message);
+    // res.send('WHOOPSIES! We have a problem!');
 });
 
 // Hey, listen, lady!

@@ -77,7 +77,8 @@ button:hover {
 
 /* FORMS AND INPUT STYLE -------------------------------------------------*/
 
-input {
+input,
+textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     color: #555;
@@ -87,7 +88,7 @@ input {
     line-height: 1.5;
     padding: 0.25rem 0.25rem;
     text-decoration: none;
-    margin: 0.5rem 0.5rem;
+    margin: 0.5rem 0rem;
     width: 80%;
 }
 
@@ -116,17 +117,43 @@ input {
     align-items: center;
 }
 
+#description,
+#instructions {
+    width: 20rem;
+    height: 100px;
+    resize: none;
+}
+
 .ingredients-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+
+.ingredients-wrapper ul {
+    width: 100%;
+}
+
+.ingredients-wrapper li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
-#description {
-    width: 20rem;
-    height: 100px;
-    resize: none;
+.ingredients-wrapper label {
+    font-size: 1rem;
+}
+
+.ingredients-wrapper input {
+    width: 70%;
+    margin: 0.5rem 0;
+}
+
+#image-URL-label {
+    font-size: 0.95rem;
 }
 
 /* This disables the arrows from appearing in the number input */
