@@ -3,11 +3,11 @@
 <h1>Edit a Cocktail Entry</h1>
 
 <form class="cocktail-form" action="/cocktails/<%=cocktail._id%>/?_method=PUT" method="POST">
-    <div>
+    <div class="label-input-pair">
         <label for="title">Title</label>
         <input type="text" name="cocktail[title]" id="title" value="<%= cocktail.title %>" required>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="description">Description</label>
         <textarea name="cocktail[description]" id="description" required><%= cocktail.description%></textarea>
     </div>
@@ -47,19 +47,19 @@
         </ul>
       
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="instructions">Instructions</label>
         <textarea name="cocktail[instructions]" id="instructions" required><%= cocktail.instructions %></textarea>
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="glass">Glass</label>
         <input type="text" name="cocktail[glass]" id="glass" required value="<%= cocktail.glass %>">
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="garnish">Garnish</label>
         <input type="text" name="cocktail[garnish]" id="garnish" required value="<%= cocktail.garnish %>">
     </div>
-    <div>
+    <div class="label-input-pair">
         <label for="image">Image URL</label>
         <input type="text" name="cocktail[image]" id="image" required value="<%= cocktail.image %>">
     </div>
