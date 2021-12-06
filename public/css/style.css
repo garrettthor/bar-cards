@@ -242,10 +242,32 @@ input[type="number"] {
     width: 70%;
 }
 
+#home-account-zone input {
+    width: 15rem;
+}
+
 /* Maybe diffrent colors here? */
 
 #new-manager-btn {
 }
 
 #new-crew-btn {
+}
+
+/* Errors */
+
+.alert {
+    color: #fff;
+    margin-top: 1rem;
+    padding: 1rem;
+    width: 30rem;
+    border-radius: 5px;
+}
+
+.alert h1 {
+    text-align: center;
+}
+
+.error-alert {
+    background-color: #dd0000;
 }

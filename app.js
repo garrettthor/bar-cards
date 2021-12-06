@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const Joi = require('joi');
 const CatchAsync = require('./utilities/catchAsync');
 const ExpressError = require('./utilities/expressError');
 const methodOverride = require('method-override');
@@ -52,7 +53,20 @@ app.get('/cocktails/new', (req, res) => {
 });
 
 app.post('/cocktails', CatchAsync(async(req, res, next) => {
-        if(!req.body.cocktail) throw new ExpressError('Invalid Cocktail Data', 400);
+        // if(!req.body.cocktail) throw new ExpressError('Invalid Cocktail Data', 400);
+
+        const cocktailSchema = Joi.object({
+            cocktail: Joi.object({
+                title: Joi.string().required(),
+                description: Joi.string().required(),
+                price: Joi.number().required().min(0),
+            }).required(),
+        });
+        const { error } = cocktailSchema.validate(req.body);
+        if(error) {
+            const msg = error.details.map(el => el.message).join(',');
+            throw new ExpressError(msg, 400);
+        };
         const cocktail = new Cocktail(req.body.cocktail);
         await cocktail.save();
         res.redirect(`/cocktails/${cocktail._id}`);
@@ -136,7 +150,8 @@ app.all('*', (req, res, next) => {
 
 app.use((err, req, res, next) => {
     const { statusCode = 500, message = 'Something went wrong' } = err;
-    res.status(statusCode).send(message);
+    if(!err.message) err.message = 'Oh dang, something done goofed!';
+    res.status(statusCode).render('error', { err });
     // res.send('WHOOPSIES! We have a problem!');
 });
 
