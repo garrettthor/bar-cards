@@ -8,6 +8,7 @@ const ExpressError = require('./utilities/expressError');
 const methodOverride = require('method-override');
 const Cocktail = require('./models/cockail');
 const Compendium = require('./models/compendium');
+const { validateCocktailSchema } = require('./schemas.js');
 
 
 mongoose.connect('mongodb://localhost/bar-cards', 
@@ -34,6 +35,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+const validateCocktail = (req, res, next) => {
+        const { error } = validateCocktailSchema.validate(req.body);
+        if(error) {
+            const msg = error.details.map(el => el.message).join(',');
+            throw new ExpressError(msg, 400);
+        } else {
+            next();
+        };
+};
+
 
 // Home route
 
@@ -52,21 +63,9 @@ app.get('/cocktails/new', (req, res) => {
     res.render('cocktails/new');
 });
 
-app.post('/cocktails', CatchAsync(async(req, res, next) => {
+app.post('/cocktails', validateCocktail, CatchAsync(async(req, res, next) => {
         // if(!req.body.cocktail) throw new ExpressError('Invalid Cocktail Data', 400);
 
-        const cocktailSchema = Joi.object({
-            cocktail: Joi.object({
-                title: Joi.string().required(),
-                description: Joi.string().required(),
-                price: Joi.number().required().min(0),
-            }).required(),
-        });
-        const { error } = cocktailSchema.validate(req.body);
-        if(error) {
-            const msg = error.details.map(el => el.message).join(',');
-            throw new ExpressError(msg, 400);
-        };
         const cocktail = new Cocktail(req.body.cocktail);
         await cocktail.save();
         res.redirect(`/cocktails/${cocktail._id}`);
