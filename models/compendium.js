@@ -10,8 +10,13 @@ const compendiumSchema = new Schema({
         default: Date.now 
         },
     accessList: [String],
-    cocktailList: [String],
-    color: String
+    color: String,
+    cocktails: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Cocktail'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Compendium', compendiumSchema);

@@ -66,14 +66,15 @@ app.get('/cocktails/new', (req, res) => {
 app.post('/cocktails', validateCocktail, CatchAsync(async(req, res, next) => {
         // if(!req.body.cocktail) throw new ExpressError('Invalid Cocktail Data', 400);
 
-        const cocktail = new Cocktail(req.body.cocktail);
-        await cocktail.save();
-        res.redirect(`/cocktails/${cocktail._id}`);
+    const cocktail = new Cocktail(req.body.cocktail);
+    await cocktail.save();
+    res.redirect(`/cocktails/${cocktail._id}`);
 }));
 
 app.get('/cocktails/:id', CatchAsync(async(req, res) => {
     const cocktail = await Cocktail.findById(req.params.id);
-    res.render('cocktails/show', { cocktail });
+    const compendiums = await Compendium.find({});
+    res.render('cocktails/show', { cocktail, compendiums });
 }));
 
 app.get('/cocktails/:id/edit', CatchAsync(async(req, res) => {
@@ -138,6 +139,18 @@ app.delete('/compendiums/:id', CatchAsync(async(req, res) => {
     const { id } = req.params;
     const compendium = await Compendium.findByIdAndDelete(id);
     res.redirect('/compendiums');
+}));
+
+// Adding cocktails to compendiums, etc
+
+app.post('/compendiums/:id/addCocktail', CatchAsync(async(req, res) => {
+    const compendium = document.querySelector('#compendium-selection')
+    const cocktail = await Cocktail.findById(req.body.cocktailId);
+    console.log(compendium);
+    console.log(cocktail);
+    // await compendium.cocktails.push(cocktail);
+    // await compendium.save();
+    res.redirect(`/compendiums/${compendium._id}`);
 }));
 
 // Error Handling

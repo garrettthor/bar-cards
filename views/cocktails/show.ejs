@@ -101,7 +101,22 @@
 
     </div>
 </section>
-
+<div>
+    <form action="/compendiums/<%compendiums._id%>/addCocktail" method="POST">
+        <button>Add to Compendium: </button>
+        <select>
+            <% for (var i=0; i < compendiums.length; i++) { %>
+                <option id="compedium-selection" value="<%= compendiums[i].id %>">
+                    <%= compendiums[i].name %>
+                </option>
+                <% } %>
+        </select>
+    </form>
+</div>
+<div>
+    <form action="/cocktails/<%= cocktail.id %>/edit" method="get">
+        <button type="submit">Edit</button>
+</div>
 <div>
     <form action="/cocktails/<%= cocktail._id %>/?_method=DELETE" method="POST">
         <button>Delete Cocktail</button>
